@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.com/AndreyRomanchev/otus-go.svg?branch=master)](https://travis-ci.com/github/AndreyRomanchev/otus-go)
+
 ## Домашние задания курса OTUS «Разработчик Golang»
 1) [«Hello now»](./hw01_hello_now)
 2) [«Распаковка строки»](./hw02_unpack_string)
