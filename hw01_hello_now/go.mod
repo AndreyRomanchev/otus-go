@@ -1,4 +1,4 @@
-module github.com/AndreyRomanchev/hw01_hello_now
+module github.com/AndreyRomanchev/otus-go/hw01_hello_now
 
 go 1.14
 
