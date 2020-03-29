@@ -13,11 +13,11 @@ var ErrNumbersNotAllowed = errors.New("there is a number in string, only single 
 func Unpack(s string) (string, error) {
 	var ans strings.Builder
 	for pos, char := range s {
-		if unicode.IsDigit(char){
+		if unicode.IsDigit(char) {
 			if ans.Len() != 0 {
 				// get previous character
 				prev := s[pos-1]
-				if unicode.IsDigit(rune(prev)){
+				if unicode.IsDigit(rune(prev)) {
 					// there is a number in string
 					return "", ErrNumbersNotAllowed
 				}
