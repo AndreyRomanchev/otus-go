@@ -43,9 +43,28 @@ var text = `Как видите, он  спускается  по  лестни�
 	посидеть у огня и послушать какую-нибудь интересную сказку.
 		В этот вечер...`
 
+var digitsText = "6 6 6 6 6 6 6 1 2 3 4 5 6 7 7 8 8 9 9 0 0 1 1 1 1 2 2 2 3 3 4 5 11 12 13 14 15"
+
+var englishText = `The Go programming language is an open source project to make programmers more productive.
+Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make, it easy to write programs that
+get the most out of multicore and networked machines, while its novel type system enables flexible and modular
+program construction. Go compiles quickly to machine code yet has the convenience of garbage collection and the
+power of run-time reflection. It's a fast, statically typed, compiled language that feels like a dynamically
+typed, interpreted language.`
+
 func TestTop10(t *testing.T) {
 	t.Run("no words in empty string", func(t *testing.T) {
 		assert.Len(t, Top10(""), 0)
+	})
+
+	t.Run("digits test", func(t *testing.T) {
+		expected := []string{"6", "1", "2", "3", "4", "5", "7", "8", "9", "0"}
+		assert.ElementsMatch(t, expected, Top10(digitsText))
+	})
+
+	t.Run("english test", func(t *testing.T) {
+		expected := []string{"and", "Go", "to", "the", "of", "language", "is", "typed,", "that", "a"}
+		assert.ElementsMatch(t, expected, Top10(englishText))
 	})
 
 	t.Run("positive test", func(t *testing.T) {
