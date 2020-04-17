@@ -1,4 +1,4 @@
-module github.com/AndreyRomanchev/hw03_frequency_analysis
+module github.com/AndreyRomanchev/otus-go/hw03_frequency_analysis
 
 go 1.14
 
