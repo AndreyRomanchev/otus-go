@@ -49,8 +49,30 @@ func TestCache(t *testing.T) {
 		require.Nil(t, val)
 	})
 
-	t.Run("purge logic", func(t *testing.T) {
-		// Write me
+	t.Run("purge logic car test", func(t *testing.T) {
+		c := NewCache(3)
+		c.Set("opel", "astra")
+		c.Set("audi", "s6")
+		c.Set("bmw", "x5")
+		c.Set("mercedes", "s600")
+
+		val, ok := c.Get("bmw")
+		require.Equal(t, "x5", val)
+		require.True(t, ok)
+
+		val, ok = c.Get("audi")
+		require.Equal(t, "s6", val)
+		require.True(t, ok)
+
+		val, ok = c.Get("mercedes")
+		require.Equal(t, "s600", val)
+		require.True(t, ok)
+
+		_, ok = c.Get("opel")
+		require.False(t, ok)
+
+		_, ok = c.Get("trabant")
+		require.False(t, ok)
 	})
 }
 
