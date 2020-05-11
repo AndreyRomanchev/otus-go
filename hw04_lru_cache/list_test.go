@@ -48,4 +48,28 @@ func TestList(t *testing.T) {
 		}
 		require.Equal(t, []int{50, 30, 10, 40, 60, 80, 70}, elems)
 	})
+
+	t.Run("another one complex", func(t *testing.T) {
+		l := NewList()
+
+		l.PushBack('?')           // ['?']
+		l.PushBack("!!!")         // ['?', "!!!"]
+		l.PushBack(123)           // ['?', "!!!", 123]
+		l.PushFront([2]int{0, 1}) // [[2]int{0, 1}, '?', "!!!", 123]
+		require.Equal(t, l.Len(), 4)
+
+		l.Remove(l.Back()) // [[2]int{0, 1}, '?', "!!!"]
+		require.Equal(t, l.Len(), 3)
+
+		l.MoveToFront(l.Back()) // ["!!!", [2]int{0, 1}, '?']
+		require.Equal(t, l.Len(), 3)
+
+		elems := make([]interface{}, 0, l.Len())
+		for i := l.Front(); i != nil; i = i.Prev {
+			elems = append(elems, i.Value.(interface{}))
+			l.Remove(i)
+		}
+		require.Equal(t, []interface{}{"!!!", [2]int{0, 1}, '?'}, elems)
+		require.Equal(t, l.Len(), 0)
+	})
 }
